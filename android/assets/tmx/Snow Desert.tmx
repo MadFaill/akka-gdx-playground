@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="48">
+ <tileset firstgid="1" name="Caves" tilewidth="32" tileheight="32" tilecount="264">
+  <image source="Snow Desert/045-Cave03.png" width="256" height="1056"/>
+ </tileset>
+ <tileset firstgid="265" name="Ground" tilewidth="32" tileheight="32" tilecount="176">
+  <image source="Snow Desert/gallery_22934_8_157059.png" width="256" height="704"/>
+ </tileset>
+ <tileset firstgid="441" name="TW" tilewidth="32" tileheight="32" tilecount="48">
+  <image source="Snow Desert/-Charas-ornements-du-Nord-1.png" width="192" height="256"/>
+ </tileset>
+ <tileset firstgid="489" name="Tree" tilewidth="32" tileheight="32" tilecount="56">
+  <image source="Snow Desert/9378261.png" width="448" height="128"/>
+ </tileset>
+ <tileset firstgid="545" name="Snow" tilewidth="32" tileheight="32" tilecount="256">
+  <image source="Snow Desert/Hanzo-SnowfieldSetVS-1.png" width="512" height="512"/>
+ </tileset>
+ <layer name="Ground" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJyLYWRgiBnFRGHOUTzi8ECnOXzYAYppbT6t7EE3lxb2YDOPmnbgczM17CEUJpSGGbH6ybWHVH3oaY6QXlrnAWqnl1E/kG82rc0fquEPAJwXtbc=
+  </data>
+ </layer>
+ <layer name="Walls" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJyzY2BgsAdiByC2oxHbDYjdgdiDBHYskepjoGw/IPYH4gAS2KlEqk+BskfByANWjKRjPyD2gWJfItSPgqEP3ImMR2LVjQLcYDQMRwG5YDimHQAIwxxN
+  </data>
+ </layer>
+ <layer name="Cave" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztzbERABAUBNFfKSJUgggl2yZOdG9m443QS5SpCB+VGnXhQ2XQpCV8bDp0hQ8zMzP75wF3DQWV
+  </data>
+ </layer>
+ <layer name="Actors" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
+  </data>
+ </layer>
+ <objectgroup name="actors"/>
+ <layer name="Decorations" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzdVEsOgjAQxWKiJvjZyEblNJ6B6/tJVK7AzmnSJsM4tG9g50vIkOnrmy8UxX+gpMcFi2K1wHgdqFchMY3nNRgbBe9PjNUITqVwECwnZTTvfq7nN5rxPTHnsfqQWUa8SP8N7pKGPS3uweV5D4rxTNVCGuug07qh7oVsI2K0bmg9PqTfJWIciVszvqbrsSXfTuhzHwLJv4b3PtgT2bPQ03wpoHx0Rh6tIT7nx17m7qfOe3GmzSEFXidah7XncmesezEFSI5Ivb6/Ml/LbnjE+3JWHDLfse+M66Xup/j8vyF9sSeWGfvvVPL5f2NT/vpQaL3W8p+zU1qvea65nlj3wQrfX57jF7koGSs=
+  </data>
+ </layer>
+ <objectgroup name="Collide">
+  <object id="1" x="-3" y="266" width="435" height="21"/>
+  <object id="2" x="305" y="279" height="1"/>
+  <object id="4" x="524.5" y="263.5" width="273.5" height="21"/>
+  <object id="5" x="-0.5" y="73.5" width="800.5" height="21"/>
+  <object id="6" x="125" y="541" width="36" height="35"/>
+  <object id="9" x="705" y="707" width="30" height="25"/>
+  <object id="13" x="509" y="592" width="11" height="47"/>
+  <object id="15" x="602.5" y="655.5" width="11" height="47"/>
+  <object id="16" x="570.5" y="529.5" width="11" height="47"/>
+  <object id="17" x="441.5" y="496.5" width="11" height="47"/>
+  <object id="18" x="443.5" y="656.5" width="11" height="47"/>
+  <object id="19" x="379.5" y="725.5" width="11" height="47"/>
+  <object id="20" x="314.5" y="662.5" width="11" height="47"/>
+  <object id="21" x="217.5" y="718.5" width="11" height="47"/>
+  <object id="22" x="91.5" y="629.5" width="11" height="47"/>
+  <object id="23" x="55.5" y="501.5" width="11" height="47"/>
+  <object id="24" x="187.5" y="431.5" width="11" height="47"/>
+  <object id="25" x="121.5" y="370.5" width="11" height="47"/>
+  <object id="26" x="281.5" y="367.5" width="11" height="47"/>
+  <object id="27" x="28.5" y="302.5" width="11" height="47"/>
+  <object id="28" x="602.5" y="303.5" width="11" height="47"/>
+  <object id="29" x="730.5" y="301.5" width="11" height="47"/>
+  <object id="30" x="666.5" y="369.5" width="11" height="47"/>
+  <object id="31" x="730.5" y="623.5" width="11" height="47"/>
+  <object id="33" x="730.5" y="758.5" width="11" height="47"/>
+  <object id="34" x="137.5" y="141.5" width="11" height="47"/>
+  <object id="35" x="415" y="413.5" width="32" height="35"/>
+  <object id="36" x="740" y="417.5" width="23" height="26.5"/>
+  <object id="37" x="377.5" y="592.5" width="11" height="47"/>
+ </objectgroup>
+ <objectgroup name="Warpers">
+  <object id="38" name="Fields_01" type="portal" gid="779" x="762" y="509" width="32" height="32"/>
+  <object id="39" name="Fields_02" type="portal" gid="779" x="101" y="800" width="32" height="32"/>
+  <object id="43" name="Dungeon_01" type="portal" x="712" y="95" width="84" height="52">
+   <ellipse/>
+  </object>
+  <object id="45" name="Giants_Cave_01" type="portal" x="17" y="31" width="61" height="65">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>
