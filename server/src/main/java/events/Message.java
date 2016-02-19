@@ -1,21 +1,16 @@
 package main.java.events;
 
 import akka.actor.ActorRef;
+import java.io.Serializable;
 
-public class Message {
-    private String message;
-    private ActorRef from;
+public class Message implements Serializable {
+    private static final long serialVersionUID = 2L;
 
-    public Message(ActorRef from ,String message) {
-        this.from = from;
+    public String message;
+    public ActorRef sender;
+
+    public Message(ActorRef sender ,String message) {
+        this.sender = sender;
         this.message = message;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public ActorRef getFrom() {
-        return from;
     }
 }
