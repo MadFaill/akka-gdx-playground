@@ -1,7 +1,7 @@
 package main.java;
 
 import akka.actor.ActorSystem;
-import main.java.server.CustomRouter;
+import main.java.server.ConnectionManager;
 import main.java.server.ServerActor;
 import scala.concurrent.duration.Duration;
 
@@ -15,7 +15,7 @@ public class ApplicationMain {
     public static void main(String[] args) throws java.io.IOException {
 
         // create default router
-        ServerSystem.actorOf(CustomRouter.props(), "ConnectionRouter");
+        ServerSystem.actorOf(ConnectionManager.props(), "ConnectionRouter");
 
         // ActorRef schedule = ServerSystem.actorOf(ScheduleInConstructor.props(), "schedule");
 

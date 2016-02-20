@@ -17,6 +17,7 @@ public class ServerActor extends UntypedActor {
 
     private LoggingAdapter log = Logging.getLogger(getContext().system(), this);
     private InetSocketAddress inetAddr;
+    final private ActorRef connectionManager = getContext().actorOf(ConnectionManager.props());
 
     public static Props props(InetSocketAddress addr) {
         return Props.create(ServerActor.class, addr);
@@ -42,7 +43,8 @@ public class ServerActor extends UntypedActor {
             log.info("In ServerActor - received message: connected");
 
             final Connected conn = (Connected) msg;
-            final ActorRef handler = getContext().actorOf(SimplisticHandlerActor.props(conn, getSender()));
+            final Connection connection = new Connection(conn, getSender(), connectionManager);
+            final ActorRef handler = getContext().actorOf(SimplisticHandlerActor.props(connection));
 
             getSender().tell(TcpMessage.register(handler), getSelf());
         }

@@ -1,34 +1,32 @@
 package main.java.server;
 
 import akka.actor.ActorRef;
-import akka.io.Tcp.Connected;
+import akka.actor.Props;
+import akka.actor.UntypedActor;
+import main.java.events.Message;
+import main.java.events.Subscribe;
+import main.java.events.Unsubscribe;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
 import java.util.Set;
 
-public class ConnectionManager {
+public class ConnectionManager extends UntypedActor {
+    final static Set<ActorRef> subscribers = new HashSet<ActorRef>();
 
-    private Map<String, ActorRef> connections;
-
-    public ConnectionManager() {
-        connections = new HashMap<String, ActorRef>();
+    public static Props props() {
+        return Props.create(ConnectionManager.class);
     }
 
-    public void addConnection(String identifier, ActorRef conn) {
-        System.err.println(identifier);
-        connections.put(identifier, conn);
-    }
-
-    public ActorRef getConnetcion(String identifier) {
-        return connections.get(identifier);
-    }
-
-    public static String identifierFromConected(Connected connected) {
-        return "/" + connected.remoteAddress().getHostName() + ":" + connected.remoteAddress().getPort();
-    }
-
-    public Set<String> connections() {
-        return connections.keySet();
+    @Override
+    public void onReceive(Object msg) {
+        if (msg instanceof Subscribe) {
+            subscribers.add(getSender());
+        } else if (msg instanceof Unsubscribe) {
+            subscribers.remove(getSender());
+        } else {
+            for (ActorRef target: subscribers) {
+                target.tell(new Message(getSelf(), (String) msg), getSender());
+            }
+        }
     }
 }
