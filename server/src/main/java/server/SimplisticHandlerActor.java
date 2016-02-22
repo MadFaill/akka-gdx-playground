@@ -32,8 +32,7 @@ public class SimplisticHandlerActor extends UntypedActor {
             final InetSocketAddress address = connection.connection.remoteAddress();
             final String prefix = address.getHostName() + ":" + address.getPort();
 
-            log.info("In SimplisticHandlerActor - Received message: " + data);
-
+            // manager всегда делает broadcast на всех.
             connection.manager.tell(prefix + ":" + data, getSender());
         } else if (msg instanceof ConnectionClosed) {
             getContext().stop(getSelf());
@@ -42,6 +41,8 @@ public class SimplisticHandlerActor extends UntypedActor {
                     TcpMessage.write(ByteString.fromArray((((Message) msg).message).getBytes())),
                     getSelf()
             );
+        } else {
+            unhandled(msg);
         }
     }
 }

@@ -1,6 +1,7 @@
 package main.java.server;
 
 import akka.actor.ActorRef;
+import akka.actor.ActorSelection;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
 import main.java.events.Message;
@@ -24,9 +25,11 @@ public class ConnectionManager extends UntypedActor {
         } else if (msg instanceof Unsubscribe) {
             subscribers.remove(getSender());
         } else {
-            for (ActorRef target: subscribers) {
-                target.tell(new Message(getSelf(), (String) msg), getSender());
-            }
+            final ActorSelection selection = getContext().actorSelection("akka://GameServer/user/serverActor/connection:*");
+            selection.tell(new Message(getSelf(), (String) msg), getSender());
+//            for (ActorRef target: subscribers) {
+//                target.tell(new Message(getSelf(), (String) msg), getSender());
+//            }
         }
     }
 }
