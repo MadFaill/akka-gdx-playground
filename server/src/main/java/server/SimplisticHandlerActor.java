@@ -1,5 +1,6 @@
 package main.java.server;
 
+import akka.actor.ActorSelection;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
 import akka.event.Logging;
@@ -14,6 +15,8 @@ import java.net.InetSocketAddress;
 
 public class SimplisticHandlerActor extends UntypedActor {
     private LoggingAdapter log = Logging.getLogger(getContext().system(), this);
+
+    final private ActorSelection clients = getContext().actorSelection("akka://GameServer/user/serverActor/connection:*");
     final private Connection connection;
 
     public static Props props(Connection connection) {
@@ -22,7 +25,6 @@ public class SimplisticHandlerActor extends UntypedActor {
 
     public SimplisticHandlerActor(Connection connection) {
         this.connection = connection;
-        this.connection.subscribe(getSelf());
     }
 
     @Override
@@ -32,8 +34,7 @@ public class SimplisticHandlerActor extends UntypedActor {
             final InetSocketAddress address = connection.connection.remoteAddress();
             final String prefix = address.getHostName() + ":" + address.getPort();
 
-            // manager всегда делает broadcast на всех.
-            connection.manager.tell(prefix + ":" + data, getSender());
+            clients.tell(new Message(getSelf(), prefix + ":" + data), getSender());
         } else if (msg instanceof ConnectionClosed) {
             getContext().stop(getSelf());
         } else if (msg instanceof Message) {

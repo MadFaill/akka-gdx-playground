@@ -13,7 +13,6 @@ import akka.io.TcpMessage;
 public class ServerActor extends UntypedActor {
 
     private InetSocketAddress inetAddr;
-    final private ActorRef connectionManager = getContext().actorOf(ConnectionManager.props());
 
     public static Props props(InetSocketAddress addr) {
         return Props.create(ServerActor.class, addr);
@@ -33,11 +32,9 @@ public class ServerActor extends UntypedActor {
     public void onReceive(Object msg) throws Exception {
         if (msg instanceof Connected) {
             final Connected conn = (Connected) msg;
-            final Connection connection = new Connection(conn, getSender(), connectionManager);
+            final Connection connection = new Connection(conn, getSender());
             final ActorRef handler = getContext().actorOf(
                     SimplisticHandlerActor.props(connection), "connection:"+conn.remoteAddress().getPort());
-
-            System.err.println("Path: "+handler.path());
 
             getSender().tell(TcpMessage.register(handler), getSelf());
         } else if (msg instanceof CommandFailed) {
