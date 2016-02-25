@@ -14,6 +14,12 @@ import main.java.events.Message;
 import java.net.InetSocketAddress;
 
 public class SimplisticHandlerActor extends UntypedActor {
+
+    public class ByteMessage {
+        public String msg;
+        public ByteMessage(String msg) { this.msg = msg; }
+    }
+
     private LoggingAdapter log = Logging.getLogger(getContext().system(), this);
 
     final private ActorSelection clients = getContext().actorSelection("akka://GameServer/user/serverActor/connection:*");
